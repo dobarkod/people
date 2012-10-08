@@ -5,3 +5,6 @@
 /*/media/
 /dev.db
 /*.sublime-*
+/.coverage
+/cover
+/nosetests.xml
