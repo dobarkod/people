@@ -4,7 +4,7 @@ from decimal import Decimal
 from core.models.base import BaseNote, BaseTemporalModel, CurrencyField
 from core.models.person import Person
 
-__all__ = ['Client', 'ClientNote', 'Project']
+__all__ = ['Client', 'ClientNote', 'Project', 'Allocation']
 
 
 class Client(models.Model):
