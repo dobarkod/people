@@ -85,8 +85,6 @@ class BaseTemporalModel(models.Model):
         if frm:
             if self.start:
                 frm = max(frm, self.start)
-            else:
-                pass  # just use frm as it is
         else:
             if self.start:
                 frm = self.start
@@ -96,8 +94,6 @@ class BaseTemporalModel(models.Model):
         if to:
             if self.end:
                 to = min(to, self.end)
-            else:
-                pass  # just use to as it is
         else:
             if self.end:
                 to = self.end
