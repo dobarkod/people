@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 import datetime
 
@@ -128,6 +129,10 @@ class BaseTemporalTest(TestCase):
             TestModel.objects.filter_future().get())
         self.assertFalse(
             TestModel.objects.filter_archived(when=self.tomorrow).exists())
+
+    def test_negative_interval(self):
+        m = TestModel(start=self.tomorrow, end=self.yesterday)
+        self.assertRaises(ValidationError, m.save)
 
 
 class BaseNoteTest(TestCase):

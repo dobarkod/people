@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 import datetime
 
@@ -55,6 +56,14 @@ class BaseTemporalModel(models.Model):
 
     class Meta:
         abstract = True
+
+    def clean(self):
+        if self.start and self.end and self.end < self.start:
+            raise ValidationError('negative intervals are not allowed')
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super(BaseTemporalModel, self).save(*args, **kwargs)
 
     def is_active_at(self, when=None):
         if when is None:
