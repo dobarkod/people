@@ -228,3 +228,5 @@ if 'raven.contrib.django' in INSTALLED_APPS and SENTRY_DSN:
 else:
     # Use default Django logging setup
     LOGGING = BASE_LOGGING
+
+AUTH_PROFILE_MODULE = 'core.Person'
