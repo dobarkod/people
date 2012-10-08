@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 import datetime
 
-__all__ = ['BaseNote', 'BaseTemporalManager', 'BaseTemporalModel']
+__all__ = ['BaseNote', 'BaseTemporalManager', 'BaseTemporalModel',
+    'CurrencyField']
 
 
 class BaseNote(models.Model):
@@ -110,3 +111,12 @@ class BaseTemporalModel(models.Model):
     @property
     def days(self):
         return len(self.days_range())
+
+
+class CurrencyField(models.DecimalField):
+
+    def __init__(self, *args, **kwargs):
+        max_digits = kwargs.pop('max_digits', 11)
+        decimal_places = kwargs.pop('decimal_places', 2)
+        super(CurrencyField, self).__init__(*args, max_digits=max_digits,
+            decimal_places=decimal_places, **kwargs)

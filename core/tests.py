@@ -6,8 +6,9 @@ import datetime
 from .models.base import *
 from .models.person import *
 
+
 class TestModel(BaseTemporalModel):
-    pass
+    amount = CurrencyField(blank=True, null=True)
 
 
 class TestModelNote(BaseNote):
