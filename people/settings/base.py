@@ -135,6 +135,7 @@ INSTALLED_APPS = (
 
     'core',
     'pm',
+    'hr',
 )
 
 # Get the SENTRY_DSN from your project settings page in Sentry (either self
