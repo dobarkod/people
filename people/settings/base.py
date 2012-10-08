@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'raven.contrib.django',
 
     'core',
+    'pm',
 )
 
 # Get the SENTRY_DSN from your project settings page in Sentry (either self
